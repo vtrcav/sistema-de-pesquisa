@@ -1,0 +1,81 @@
+html, body{
+    height: 100%;
+    background-color: #fdfdfd;
+    font-family: 'Bitstream Vera Sans', Verdana, Tahoma, 'Sans serif';
+    font-size: 10pt;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conteudo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.icone{
+    text-align: center;
+}
+.forms{
+    padding-top: 15px;
+}
+.pesquisa{
+    margin: 0;
+    padding: 3px;
+    width: 390px;
+}
+button{
+    padding: 3px;
+}
+.link{
+    margin-left: 0%;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+.seletor{
+    padding-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+  }
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #bfc0c0;
+    font-size: 10pt;
+  }
+a:link, a:visited {
+    text-align: center;
+    text-decoration: none;
+    color: #1a0dab;
+}    
+a:hover {
+    text-decoration: underline;
+  }
+th{
+    background-color: rgb(127, 182, 255);
+}
+tr:nth-child(even) {background-color: #eeeeee;}
+tr:hover {background-color: #f1f1f1;}
+h3,h2{
+    text-align: center;
+}
+h3{
+    font-size: 9pt;
+}
+h2{
+    font-size: 10pt;
+}
+p{
+    text-align: center;
+    font-size: 10pt;
+}
