@@ -1,2 +1,2 @@
 # sistema-de-pesquisa
- Sistema de pesquisa ao db HNR
+ Sistema de pesquisa a banco de dados sql.
