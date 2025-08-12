@@ -76,7 +76,96 @@ body {
 }
 
 .table-container {
-    overflow-x: auto;
+    overflow-x: visible;
+}
+
+/* Tabela: manter linha única e truncar conteúdo longo */
+#pacientes {
+    table-layout: fixed;
+    width: 100%;
+}
+
+#pacientes th,
+#pacientes td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    box-sizing: border-box;
+    line-height: 1.2;
+}
+
+/* Larguras ajustadas por conteúdo (sem scroll) */
+/* Layout padrão (8 colunas) */
+#pacientes.is-default th:nth-child(1),
+#pacientes.is-default td:nth-child(1) { /* PRONTUÁRIO */ width: 6ch; }
+#pacientes.is-default th:nth-child(3),
+#pacientes.is-default td:nth-child(3) { /* SETOR (legível) */ width: 12ch; }
+#pacientes.is-default th:nth-child(4),
+#pacientes.is-default td:nth-child(4) { /* ADMISSÃO (DD/MM/AAAA) */ width: 11ch; }
+#pacientes.is-default th:nth-child(5),
+#pacientes.is-default td:nth-child(5) { /* HORA (HH:MM) */ width: 6ch; }
+#pacientes.is-default th:nth-child(6),
+#pacientes.is-default td:nth-child(6) { /* ALTA (DD/MM/AAAA) */ width: 11ch; }
+#pacientes.is-default th:nth-child(7),
+#pacientes.is-default td:nth-child(7) { /* TIPO (visível) */ width: 11ch; }
+#pacientes.is-default th:nth-child(8),
+#pacientes.is-default td:nth-child(8) { /* CNS (até 15 dígitos) */ width: 18ch; }
+#pacientes.is-default th:nth-child(2),
+#pacientes.is-default td:nth-child(2) { /* NOME ocupa o restante com mínimo legível */ width: auto; min-width: 24ch; }
+
+/* Layout agendamento (6 colunas) */
+#pacientes.is-agendamento th:nth-child(1),
+#pacientes.is-agendamento td:nth-child(1) { /* PRONTUÁRIO */ width: 6ch; }
+#pacientes.is-agendamento th:nth-child(3),
+#pacientes.is-agendamento td:nth-child(3) { /* ADMISSÃO */ width: 11ch; }
+#pacientes.is-agendamento th:nth-child(4),
+#pacientes.is-agendamento td:nth-child(4) { /* HORA */ width: 6ch; }
+#pacientes.is-agendamento th:nth-child(5),
+#pacientes.is-agendamento td:nth-child(5) { /* TIPO */ width: 11ch; }
+#pacientes.is-agendamento th:nth-child(6),
+#pacientes.is-agendamento td:nth-child(6) { /* CNS */ width: 18ch; }
+#pacientes.is-agendamento th:nth-child(2),
+#pacientes.is-agendamento td:nth-child(2) { /* NOME ocupa o restante com mínimo legível */ width: auto; min-width: 24ch; }
+
+/* Não truncar: PRONTUÁRIO, ADMISSÃO, HORA, ALTA, CNS */
+/* Layout padrão */
+#pacientes.is-default th:nth-child(1),
+#pacientes.is-default td:nth-child(1),
+#pacientes.is-default th:nth-child(4),
+#pacientes.is-default td:nth-child(4),
+#pacientes.is-default th:nth-child(5),
+#pacientes.is-default td:nth-child(5),
+#pacientes.is-default th:nth-child(6),
+#pacientes.is-default td:nth-child(6),
+#pacientes.is-default th:nth-child(8),
+#pacientes.is-default td:nth-child(8) {
+    overflow: visible;
+    text-overflow: initial;
+}
+
+/* Layout agendamento */
+#pacientes.is-agendamento th:nth-child(1),
+#pacientes.is-agendamento td:nth-child(1),
+#pacientes.is-agendamento th:nth-child(3),
+#pacientes.is-agendamento td:nth-child(3),
+#pacientes.is-agendamento th:nth-child(4),
+#pacientes.is-agendamento td:nth-child(4),
+#pacientes.is-agendamento th:nth-child(6),
+#pacientes.is-agendamento td:nth-child(6) {
+    overflow: visible;
+    text-overflow: initial;
+}
+
+/* Espaçamento leve para leitura nas colunas da direita */
+#pacientes.is-default th:nth-child(n+4),
+#pacientes.is-default td:nth-child(n+4) {
+    padding-left: 10px;
+}
+
+#pacientes.is-agendamento th:nth-child(n+3),
+#pacientes.is-agendamento td:nth-child(n+3) {
+    padding-left: 10px;
 }
 
 .btn-new-search {
@@ -175,6 +264,7 @@ body {
         width: 100% !important;
         font-size: 10pt !important;
         border-collapse: collapse !important;
+        table-layout: auto !important; /* imprimir conteúdo completo */
     }
     
     thead {
@@ -187,6 +277,9 @@ body {
     th, td {
         padding: 4px !important;
         border: 1px solid #ddd !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
     }
     
     .header-info {

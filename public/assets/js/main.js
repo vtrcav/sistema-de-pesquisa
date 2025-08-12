@@ -3,7 +3,22 @@ $(document).ready(function () {
     const excelTitle = `Resultados_${pageData.searchTerm}_${pageData.currentDate}`;
     const printTitle = `Resultados para ${pageData.searchTerm}`;
 
+    const tableEl = $('#pacientes');
+    const isAgendamento = tableEl.hasClass('is-agendamento');
+
+    function headerLabel(idx) {
+        if (!isAgendamento) {
+            const map = ['PRONTUÁRIO','NOME','SETOR','ADMISSÃO','HORA','ALTA','TIPO','CNS'];
+            return map[idx] ?? '';
+        } else {
+            const map = ['PRONTUÁRIO','NOME','ADMISSÃO','HORA','TIPO','CNS'];
+            return map[idx] ?? '';
+        }
+    }
+
     $('#pacientes').DataTable({
+        autoWidth: false,
+        responsive: false,
         language: {
             lengthMenu: '_MENU_ registros por página',
             zeroRecords: 'Nenhum registro encontrado',
@@ -27,7 +42,15 @@ $(document).ready(function () {
                 title: excelTitle,
                 className: 'export-excel',
                 exportOptions: {
-                    columns: ':visible'
+                    columns: ':visible',
+                    format: {
+                        header: function (data, columnIdx) {
+                            return headerLabel(columnIdx);
+                        },
+                        body: function (data, row, column, node) {
+                            return $(node).text().trim();
+                        }
+                    }
                 }
             },
             {
@@ -62,6 +85,9 @@ $(document).ready(function () {
                         .css('border-collapse', 'collapse')
                         .css('width', '100%');
                         
+                    const $ths = $(win.document.body).find('table th');
+                    $ths.each(function (i) { $(this).text(headerLabel(i)); });
+
                     $(win.document.body).find('table th')
                         .css('background-color', '#1a4da2')
                         .css('color', 'white')

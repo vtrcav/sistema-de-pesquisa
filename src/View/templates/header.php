@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($_GET['p']) ?> - Arquivos Hospital Nina Rodrigues</title>  
+    <title><?php echo htmlspecialchars($viewData['searchTerm'] ?? '') ?> - Arquivos Hospital Nina Rodrigues</title>
     <link rel="shortcut icon" href="assets/img/house-medical-solid.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="assets/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script src="assets/bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery-3.5.1.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap5.min.js"></script>
-    <!-- Adicionando suporte para exportação -->
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
@@ -25,13 +25,9 @@
 <body>
 <div class="loader">
     <div class="spinner-grow" role="status">
-        <span class="visually-hidden">Carregando...</span>
+        <span class="visualmente-oculto"></span>
     </div>
-</div>
-
-<!-- Cabeçalho principal -->
-<!-- <header class="header">
-    <div class="header-title">Hospital Nina Rodrigues</div>
-</header> -->
-
+    </div>
 <div class="conteudo">
+
+

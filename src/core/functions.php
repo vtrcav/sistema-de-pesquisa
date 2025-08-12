@@ -24,7 +24,7 @@ function display($value, $default = 'N/D') {
  * @param string $default O valor padrão.
  * @return string
  */
-function display_date($date_string, $format = 'd-m-Y', $default = 'N/D') {
+function display_date($date_string, $format = 'd/m/Y', $default = 'N/D') {
     // Retorna o padrão se for nulo, string vazia ou uma data inválida do banco.
     if ($date_string === null || $date_string === '' || strtotime($date_string) <= 0) {
         return $default;
